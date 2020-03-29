@@ -26,3 +26,6 @@ data = 'x = 3 + 42 *  (s - t)'
 lexer = CalcLexer()
 for tok in lexer.tokenize(data):
     print(tok)
+
+
+# %%

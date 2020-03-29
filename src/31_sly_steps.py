@@ -144,23 +144,19 @@ class IRedisParser(Parser):
             print("Syntax error at EOF")
 
 
-def split(s):
-    lexer = IRedisLexer()
-    parser = IRedisParser()
-    return parser.parse(lexer.tokenize(s))
-
-
-from lib import examine_func
-
-examine_func.assert_functions(split)
-
 
 # %%
 lexer = IRedisLexer()
 parser = IRedisParser()
 
 input_stream = "set foo 'bar with space' xx"
-for tok in lexer.tokenize(input_stream):
+tokens = lexer.tokenize(input_stream)
+for tok in tokens:
     print(tok)
+
+#%%
+parser.parse(lexer.tokenize(input_stream))
+
+
 
 # %%
